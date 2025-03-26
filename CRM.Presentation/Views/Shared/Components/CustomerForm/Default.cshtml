@@ -1,0 +1,51 @@
+﻿@model CustomerTableViewModel
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Customer Form</h4>
+                @{
+                    if (Model.IsCreated)
+                    {
+                        <div class="alert alert-success" role="alert">@TempData["customer"] user created succesfully</div>
+                    }
+                }
+                <partial name="_ErrorsAlert" model="Model" />
+                <p class="card-description">Customer Info</p>
+                <form class="forms-sample"
+                      asp-controller="Customer"
+                      asp-action="Form"
+                      method="post">
+                    <div class="form-group">
+                        Name
+                        <input asp-for="FirstName" required class="form-control border-primary" placeholder="Name" autofocus autocomplete="on">
+                        <span asp-validation-for="FirstName"></span>
+                    </div>
+                    <div class="form-group">
+                        Lastname
+                        <input asp-for="LastName" required class="form-control border-primary" placeholder="Lastname" autofocus autocomplete="on">
+                        <span asp-validation-for="LastName"></span>
+                    </div>
+                    <div class="form-group">
+                        E-mail
+                        <input asp-for="Email" class="form-control border-primary" placeholder="E-mail">
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group">
+                        Region
+                        <select id="slcCountries"
+                                asp-for="Region"
+                                asp-items="@Model.Regions"
+                                class="form-control border-primary"
+                                title="Chosen Region">
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary mr-2">Submit</button>
+                    <a href="/">
+                        <span class="btn btn-outline-warning">Cancel</span>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Corona Admin</title>
+    <environment names="Development,Staging"><link href="/css/site.css" rel="stylesheet" asp-append-version="true" media="screen" onload="this.media='all'" /></environment>
+    <environment names="Production"><link href="/css/site.min.css" rel="stylesheet" asp-append-version="true" media="screen" onload="this.media='all'" /></environment>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    @await RenderSectionAsync("headAdmin", required: false)
+</head>
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="row w-100 m-0">
+                <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+                    <div class="card col-lg-4 mx-auto">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <environment names="Development,Staging"><script defer src="/js/site.js" asp-append-version="true"></script></environment>
+    <environment names="Production"><script defer src="/js/site.min.js" asp-append-version="true"></script></environment>
+    @await RenderSectionAsync("scriptAdmin", required: false)
+</body>
+</html>

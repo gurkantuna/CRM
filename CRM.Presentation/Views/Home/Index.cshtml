@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@await Component.InvokeAsync("CustomersTable")
+
+@section head {
+    <environment names="Development,Staging"><link href="/css/datatables.css" rel="stylesheet" /></environment>
+    <environment names="Production"><link href="/css/datatables.min.css" rel="stylesheet" /></environment>
+}
+
+@section script {
+    <environment names="Development,Staging"><script src="/js/datatables.js"></script></environment>
+    <environment names="Production"><script src="/js/datatables.min.js"></script></environment>    
+}

@@ -1,0 +1,88 @@
+﻿@model CustomerTableViewModel
+
+<div class="row mb-4">
+    <div class="col-12">
+        <a asp-controller="Customer" asp-action="Add">
+            <span class="btn btn-outline-success"><i class="mdi mdi-account-plus-outline"></i> New Customer</span>
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="tblCustomers">
+                <thead class="text-center">
+                    <tr>
+                        <th>Customer</th>
+                        <th>E-mail</th>
+                        <th>Region</th>
+                        <th>Registration Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var customer in Model.Customers)
+                    {
+                        <tr>
+                            <input asp-for="@customer.Id" type="hidden" value="@customer.Id" />
+                            <td>
+                                <label for="@customer.FirstName" data-state="cancel">@customer</label>
+                                <input asp-for="@customer.FirstName" class="form-control border-primary d-none" data-state="update" required />
+                                <input asp-for="@customer.LastName" class="form-control border-primary d-none" data-state="update" required />
+                            </td>
+                            <td>
+                                <label for="@customer.Email" data-state="cancel">@customer.Email</label>
+                                <input asp-for="@customer.Email" class="form-control border-primary d-none" data-state="update" required />
+                            </td>
+                            <td>
+                                <label for="@customer.Region" data-state="cancel">@customer.Region</label>
+                                <select asp-for="@customer.Region"
+                                        asp-items="@Model.Regions"
+                                        class="form-control border-primary d-none"
+                                        data-state="update"
+                                        title="Chosen Region">
+                                </select>
+                            </td>
+                            <td class="text-center">
+                                <label for="@customer.RegistrationDate"
+                                       data-state="cancel">
+                                    @customer.RegistrationDate.ToString("d MMMM yyyy",
+                                             System.Globalization.CultureInfo.GetCultureInfo("en-US"))
+                                </label>
+                                <input asp-for="@customer.RegistrationDate" class="form-control border-primary d-none" data-state="update" />
+                            </td>
+                            <td class="text-center">
+                                <button type="button"
+                                        class="btn btn-outline-primary btnUpdateCustomer"
+                                        data-state="cancel"
+                                        data-id="@customer.Id">
+                                    <i class="mdi mdi-account-convert"></i>Update
+                                </button>
+                                <button type="button"
+                                        class="btn btn-outline-success d-none btnUpdateCustomerSave"
+                                        data-state="update"
+                                        data-id="@customer.Id">
+                                    <i class="mdi mdi-cancel"></i>Save
+                                </button>
+                                <button type="button"
+                                        class="btn btn-outline-warning d-none btnUpdateCustomerCancel"
+                                        data-state="update"
+                                        data-id="@customer.Id">
+                                    <i class="mdi mdi-cancel"></i>Cancel
+                                </button>
+                                <button type="button"
+                                        class="btn btn-outline-danger btnDeleteCustomer"
+                                        data-id="@customer.Id"
+                                        data-state="cancel"
+                                        data-name="@customer">
+                                    <i class="mdi mdi-account-remove"></i>Delete
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

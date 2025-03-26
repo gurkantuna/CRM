@@ -1,0 +1,36 @@
+﻿@model List<User>
+
+<div class="row">
+    <div class="col-12">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="text-center">
+                    <tr>
+                        <th>Id</th>
+                        <th>Username</th>
+                        <th>E-mail</th>
+                        <th>Created Date</th>
+                        <th>Access Failed Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@user.Id</td>
+                            <td class="text-center"><label for="@user.UserName">@user.UserName</label></td>
+                            <td class="text-center"><label for="@user.Email">@user.Email</label></td>
+                            <td class="text-center">
+                                <label for="@user.CreatedAt">
+                                    @user.CreatedAt.ToString("d MMMM yyyy",
+                                             System.Globalization.CultureInfo.GetCultureInfo("en-US"))
+                                </label>
+                            </td>
+                            <td class="text-center">@user.AccessFailedCount</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

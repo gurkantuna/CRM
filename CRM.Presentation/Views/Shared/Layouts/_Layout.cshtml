@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Corona Admin</title>
+    <environment names="Development,Staging"><link href="/css/site.css" rel="stylesheet" asp-append-version="true" media="screen" onload="this.media='all'" /></environment>
+    <environment names="Production"><link href="/css/site.min.css" rel="stylesheet" asp-append-version="true" media="screen" onload="this.media='all'" /></environment>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    @await RenderSectionAsync("head", required: false)
+</head>
+<body>
+    <div class="container-scroller">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+                <a asp-controller="Home" asp-action="Index" class="sidebar-brand brand-logo"><img src="/images/jekirdek.png" alt="logo" /></a>
+                <a asp-controller="Home" asp-action="Index" class="sidebar-brand brand-logo-mini"><img src="/images/jekirdek-mini.png" alt="logo" /></a>
+            </div>
+            <ul class="nav">
+                <li class="nav-item nav-category">
+                    <span class="nav-link">Navigation</span>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-speedometer"></i>
+                        </span>
+                        <span class="menu-title">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" asp-controller="User" asp-action="Index">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-account-multiple"></i>
+                        </span>
+                        <span class="menu-title">Users</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="container-fluid page-body-wrapper">
+            <nav class="navbar p-0 fixed-top d-flex flex-row">
+                <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+                    <a class="navbar-brand brand-logo-mini" href="/"><img src="/images/jekirdek-mini.png" alt="logo" /></a>
+                </div>
+                <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+                    <ul class="navbar-nav navbar-nav-right">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+                                <div class="navbar-profile profile">
+                                    <div class="profile-desc">
+                                        <div class="profile-pic">
+                                            <div class="count-indicator">
+                                                <img class="img-xs rounded-circle" src="/images/faces/person.png" alt="">
+                                                <span class="count bg-success"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">@(User.Identity?.Name ?? "guest")</p>
+                                    <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                                <h6 class="p-3 mb-0">Profile</h6>
+                                <div class="dropdown-divider"></div>
+                                <a asp-controller="Account" asp-action="SignOut" asp-area="Admin" class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-logout text-danger"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject mb-1">Log out</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                        <span class="mdi mdi-format-line-spacing"></span>
+                    </button>
+                </div>
+            </nav>
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    @await Component.InvokeAsync("DashboardHeader")
+                    @RenderBody()
+                </div>
+                <footer class="footer">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a href="https://gurkantuna.com" target="_blank">https://gurkantuna.com</a> <span class="text-muted">-  @DateTime.Now.Year</span></span>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <environment names="Development,Staging"><script defer src="/js/site.js" asp-append-version="true"></script></environment>
+    <environment names="Production"><script defer src="/js/site.min.js" asp-append-version="true"></script></environment>
+    @await RenderSectionAsync("script", required: false)
+</body>
+</html>

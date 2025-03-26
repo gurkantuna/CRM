@@ -1,0 +1,42 @@
+[
+  {
+    "outputFileName": "wwwroot/css/site.css",
+    "inputFiles": [
+      "wwwroot/assets/css/site.css",
+      "wwwroot/lib/bootstrap-icons/font/bootstrap-icons.css",
+      "wwwroot/lib/sweetalert2/sweetalert2.css",
+      "wwwroot/lib/alertifyjs/css/alertify.css",
+      "wwwroot/lib/toastr.js/toastr.css",
+      "wwwroot/lib/select2/css/select2.css",
+      "wwwroot/assets/vendors/css/vendor.bundle.base.css",
+      "wwwroot/assets/vendors/mdi/css/materialdesignicons.min.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/jquery.js",
+      "wwwroot/lib/jquery-validate/jquery.validate.js",
+      "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "wwwroot/lib/select2/js/select2.js",
+      "wwwroot/lib/sweetalert2/sweetalert2.js",
+      "wwwroot/lib/alertifyjs/alertify.js",
+      "wwwroot/lib//toastr.js/toastr.min.js",
+      "wwwroot/assets/vendors/js/vendor.bundle.base.js",
+      "wwwroot/assets/js/dashboard.js",
+      "wwwroot/assets/js/site.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/datatables.css",
+    "inputFiles": [
+      "wwwroot/lib/datatables/datatables.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/datatables.js",
+    "inputFiles": [
+      "wwwroot/lib/datatables/datatables.js"
+    ]
+  }
+]

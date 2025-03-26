@@ -1,0 +1,46 @@
+﻿@model UserRegisterViewModel
+
+<div class="card-body px-5 py-5">
+    <h3 class="card-title text-left mb-3">Register</h3>
+    @{
+        if (Model.IsCreated)
+        {
+            <div class="alert alert-success" role="alert">@Model.UserName user created succesfully as @Model.Role</div>
+        }
+    }
+    <partial name="_ErrorsAlert" model="Model" />
+    <form asp-controller="Account" asp-action="Create" asp-area="Admin"
+          class="needs-validation"
+          method="post">
+        <div class="form-group">
+            <label asp-for="UserName">Username</label>
+            <input asp-for="UserName" class="form-control p_input" placeholder="Username">
+            <span asp-validation-for="UserName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" class="form-control p_input" placeholder="Email">
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" class="form-control p_input" placeholder="Password" ty>
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassword">Password again</label>
+            <input asp-for="ConfirmPassword" class="form-control p_input" placeholder="Enter the same password">
+            <span asp-validation-for="ConfirmPassword"></span>
+        </div>
+        <div class="form-group d-flex align-items-center justify-content-between">
+            <div class="form-check">
+                <input asp-for="RememberMe" class="form-check-input" type="checkbox" value="@Model.RememberMe" checked="@(Model.RememberMe ? "checked" : null)">
+                <label asp-for="RememberMe" class="form-check-label" for="flexCheckChecked">Remember me</label>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-block enter-btn">Submit</button>
+        </div>
+        <p class="sign-up text-center">Already have an Account?<a asp-controller="Account" asp-action="Index" asp-area="Admin"> Login</a></p>
+    </form>
+</div>
